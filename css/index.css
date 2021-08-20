@@ -102,4 +102,8 @@ span {
     height: 200px; /* height of container */
     object-fit: cover;
   }
+
+  .pageTitle {
+    font-size: medium;
+  }
  }
