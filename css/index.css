@@ -106,4 +106,8 @@ span {
   .pageTitle {
     font-size: medium;
   }
+
+  #input {
+    width: 75px;
+  }
  }

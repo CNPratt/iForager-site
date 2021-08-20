@@ -103,11 +103,16 @@ class Observation {
 function getLocation() {
     if (navigator.geolocation) {
 
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition, positionError);
     } else {
         // x.innerHTML = "Geolocation is not supported by this browser.";
 
         console.log("ran");
+    }
+    function positionError() {    
+        console.log('Geolocation is not enabled. Please enable to use this feature')
+
+        
     }
 }
 
@@ -128,6 +133,10 @@ getLocation();
 
 
 function Run() {
+
+    root.innerHTML = "";
+    obsArray =[];
+
     const getFile = async () => {
         const response = await fetch(
             `
@@ -195,5 +204,24 @@ function Run() {
 
     getFile();
 
+}
+
+function inputRelay() {
+
+    event.preventDefault();
+    input = document.getElementById("input").value;
+    queryInput = encodeURIComponent(input);
+
+    file = "https://cors.bridged.cc/https://nominatim.openstreetmap.org/search?format=json&q=" + queryInput;
+
+    console.log(file);
+
+    fetch(file)
+        .then(response => response.json())
+        .then(data => geocodedInput = data[0])
+        .then(response => console.log(geocodedInput.lat))
+        .then(response => lat = geocodedInput.lat)
+        .then(response => lon = geocodedInput.lon)
+        .then(geocodedInput => Run())
 }
 
