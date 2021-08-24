@@ -1,3 +1,7 @@
+body {
+  font-family: Federo;
+}
+
 .card {
   margin: 5px;
   flex-direction: row;

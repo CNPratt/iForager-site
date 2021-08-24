@@ -186,7 +186,7 @@ function Run() {
 
             let distance = getDistance(thisLat, thisLon, lat, lon);
 
-            let thisObs = new Observation(element.taxon.name, element.species_guess, element.place_guess, thisLat, thisLon, distance, element.uri, element.observation_photos[0].photo.url, element.created_at_details.date);
+            let thisObs = new Observation(element.taxon.name, element.taxon.preferred_common_name, element.place_guess, thisLat, thisLon, distance, element.uri, element.observation_photos[0].photo.url, element.created_at_details.date);
 
             obsArray.push(thisObs);
         });
